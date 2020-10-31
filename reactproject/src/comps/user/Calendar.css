@@ -1,0 +1,21 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+.filter { grid-area: 4 / 9 / 12 / 13; }
+.next { grid-area: 2 / 6 / 3 / 8; }
+.back { grid-area: 2 / 3 / 3 / 5; }
+.clean { grid-area: 10 / 10 / 11 / 12; }
+.div1 { grid-area: 4 / 2 / 11 / 8; }
+
+
+
+/* .td{
+    width: 70px;
+    height: 70px;
+    background-color: #fd8c2a;
+}  */
