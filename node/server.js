@@ -1,23 +1,21 @@
-
-const mysql = require('mysql');
 const express = require('express');
 const bodyparser = require('body-parser');
-const serverc = require('./server/courses.js');
+//const serverc = require('./server/courses.js');
 const cors = require('cors');
+
+const StartRouter = require("./routers/StartRouter");
+const AllCategorysRouter = require("./routers/AllCategorysRouter");
+const HomeRouter = require("./routers/HomeRouter")
+const { mysqlConnection } = require("./sql/sql");
+
 
 var app = express();
 //Configuring express server
 app.use(bodyparser.json());
 app.use(cors());
-
-//MySQL details
-var mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456789',
-    database: 'mydb',
-    multipleStatements: true
-});
+app.use('/allcategorys', AllCategorysRouter);
+app.use('/start', StartRouter);
+app.use('/home', HomeRouter);
 
 //Establish the server connection
 //PORT ENVIRONMENT VARIABLE
@@ -32,6 +30,9 @@ mysqlConnection.connect((err) => {
 
 const port = 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
+
+
+
 
 
 // app.get('/advertising', (req, res) => {

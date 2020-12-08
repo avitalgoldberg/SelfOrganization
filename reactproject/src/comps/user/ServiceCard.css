@@ -1,0 +1,37 @@
+.parent5 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    #img { grid-area: 2 / 2 / 8 / 7; }
+    #title { grid-area: 2 / 9 / 3 / 12; }
+    #short { grid-area: 3 / 8 / 7 / 12; }
+    #long { grid-area: 7 / 2 / 11 / 12; }
+    #footer { grid-area: 11 / 1 / 13 / 13; }
+
+#long{
+height:30vh;
+}  
+
+#imag{
+    border-style:double;
+    border-color:#cd283c;
+    border-width: 7px;
+
+    margin: auto;
+    width: 100%;
+/* 
+    border: 3px solid green;
+    padding: 10px; */
+}
+
+#footer {
+    background-color:#cd283c ;
+    width: auto;
+    height:10vh;
+    font-size: 25px;
+}
+

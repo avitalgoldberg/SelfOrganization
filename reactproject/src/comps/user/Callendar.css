@@ -122,7 +122,7 @@
     color: #334455;
     cursor: pointer;
     position: relative;
-    font-size: 14px;
+    font-size: 25px;
     background-color: #ffffff;
   }
   .tail-datetime-calendar .calendar-date table tbody tr > * > span {
@@ -131,11 +131,11 @@
     position: relative;
   }
   /* Select a Day */
-  .tail-datetime-calendar .calendar-date table tbody tr > *::after {
+  /* .tail-datetime-calendar .calendar-date table tbody tr > *::after {
     top: 3px;
     left: 3px;
-    width: 29px;
-    height: 29px;
+    width: 60px;
+    height: 60px;
     content: "";
     display: block;
     position: absolute;
@@ -144,7 +144,7 @@
     border-color: transparent;
     border-radius: 50%;
     -webkit-border-radius: 50%;
-  }
+  } */
   .tail-datetime-calendar .calendar-date table tbody tr > *.today {
     color: #3296c8;
   }
@@ -176,11 +176,11 @@
     background-color: #3296c8;
   }
   .point {
-    width: 3px;
-    height: 3px;
+    width: 6px;
+    height: 6px;
     border-radius: 0.375em;
     margin: 0 0.0625em;
-    background: #223344;
+    /* background: #223344; */
   }
   /* Select A Month */
   .tail-datetime-calendar .calendar-date table.calendar-month tbody tr > * {

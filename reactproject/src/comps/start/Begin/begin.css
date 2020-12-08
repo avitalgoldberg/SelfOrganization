@@ -1,0 +1,10 @@
+.parent {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(12, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 4 / 13; }
+.div2 { grid-area: 4 / 1 / 13 / 13; background: 'linear-gradient(37deg,blue 30%, red 90% )'  }

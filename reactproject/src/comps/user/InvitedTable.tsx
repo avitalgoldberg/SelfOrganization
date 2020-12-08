@@ -42,32 +42,20 @@ export default function InvitedTable() {
     useEffect(() => {
         //עדכון המסד נתונים לקראת סוף חיי הקומפוננטה
         return () => {
+            console.log('destroy', rows)
+            //קריאה לשרת ושולחת את rows
         };
     }, []);
     //בעת שינוי state עדכון ה
-    // const textChange = (e:Event) => {
-    //     // if (e.target.value)
-    //     let r = [...rows]
-    //     let new_row = r[e.target.id];
 
-    //     setRows(r)
-    // }
-    // function handleClick(event: SyntheticEvent) {
-    //     event.preventDefault();
-    //     event.
-    //     console.log('The link was clicked.');
-    // }
+    const handleChange = (e: any, idx: number, field: 'name' | 'email' | 'address' | 'phone' | 'remarks') => {
+        let arr = [...rows];
+        arr[0][field] = e.target.value;
+        setRows(arr)
 
-    // const update = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    //     //this.props.login[e.currentTarget.name] = e.currentTarget.value
-    //     let r = [...rows]
-    //     let new_row = r[e.currentTarget.parentElement.]
-    //     setRows(r)
-    // }
-
+    }
     return (
         <div className="parent1">
-            <div id="div1">InvitedTable</div>
             <div id="div2">
                 <TableContainer component={Paper}>
                     <Table className={classes.table} size="small" aria-label="a dense table">
@@ -81,21 +69,48 @@ export default function InvitedTable() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows.map((row) => (
+                            {rows.map((row, idx) => (
                                 <TableRow key={row.id}>
-                                    <TableCell align="right" component="th" scope="row">{row.remarks}</TableCell>
-                                    <TableCell align="right">{row.email}</TableCell>
-                                    <TableCell align="right">{row.phone}</TableCell>
-                                    <TableCell align="right">{row.address}</TableCell>
+                                    <TableCell align="right" component="th" scope="row">
+                                        <InputBase
+                                            className={classes2.margin}
+                                            defaultValue={row.remarks}
+                                            inputProps={{ 'aria-label': 'naked' }}
+                                            onChange={(e) => handleChange(e, idx, 'remarks')}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <InputBase
+                                            className={classes2.margin}
+                                            defaultValue={row.email}
+                                            inputProps={{ 'aria-label': 'naked' }}
+                                            onChange={(e) => handleChange(e, idx, 'email')}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <InputBase
+                                            className={classes2.margin}
+                                            defaultValue={row.phone}
+                                            inputProps={{ 'aria-label': 'naked' }}
+                                            onChange={(e) => handleChange(e, idx, 'phone')}
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        <InputBase
+                                            className={classes2.margin}
+                                            defaultValue={row.address}
+                                            inputProps={{ 'aria-label': 'naked' }}
+                                            onChange={(e) => handleChange(e, idx, 'address')}
+                                        />
+                                    </TableCell>
                                     <TableCell align="right">
                                         <InputBase
                                             className={classes2.margin}
                                             defaultValue={row.name}
                                             inputProps={{ 'aria-label': 'naked' }}
-                                        // onInput={update(
-
-                                        // )}
-                                        /></TableCell>
+                                            onChange={(e) => handleChange(e, idx, 'name')}
+                                        />
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -106,31 +121,3 @@ export default function InvitedTable() {
     )
 }
 
-
-
-//   <div>
-//              <div>InvitedTable</div>
-//             <table>
-//                  <thead>
-//                     {
-//                         header.map((()))
-//                     }
-//                 </thead>
-//                 <tbody>
-//                     {
-//                         rows.map((item,idx)=>{
-//                             return <tr>
-//                                 {
-//                         header.map((h,idh)=>{
-//                             return <td>
-//                                 <input type="text" value={item[idx][h] onChange={(e)=>textChange(e,idx,h)}}/>
-//                             </td>
-//                         })
-//                                 }
-//                             </tr>
-//                         })
-//                     }
-//                 </tbody>
-//             </table>
-//             <input type="text" onChange={(e)=>textChange(e,idx)}/>
-//             </div>

@@ -11,5 +11,16 @@ export default Calendar;
 
 
 
+import React from 'react'
 
+export default function Filter() {
+    return (
 
+                )
+            }}
+        />)
+}
+
+<Bool idFilter={1} nameFilter="cccc" kindFilter="" values="" />
+ <Num idFilter={2} nameFilter="cccc" kindFilter="" values="80" />
+<Str idFilter={3} nameFilter="cccc" kindFilter="" values="aaa bbb ccc fff" />

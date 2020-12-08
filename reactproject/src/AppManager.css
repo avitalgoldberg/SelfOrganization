@@ -1,0 +1,14 @@
+.parent20 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    #news { grid-area: 2 / 2 / 4 / 12; }
+    #other { grid-area: 11 / 2 / 13 / 12; }
+    .div3 { grid-area: 11 / 6 / 12 / 8; }
+    .div4 { grid-area: 11 / 9 / 12 / 12; }
+    .div5 { grid-area: 11 / 2 / 12 / 5; }
+    #statistic { grid-area: 4 / 2 / 11 / 12; }

@@ -1,0 +1,18 @@
+.parent10 {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 6px;
+    grid-row-gap: 0px;
+    }
+    #ll1 { grid-area: 1 / 5 / 2 / 6; }
+    #ll2 { grid-area: 1 / 6 / 2 / 7; }
+    #ll3 { grid-area: 1 / 7 / 2 / 8; }
+.parent10{
+    background-color:#cd283c;
+    height: max-content;
+}    
+
+.MuiBottomNavigationAction-label.Mui-selected{
+    color:#312c77;
+}

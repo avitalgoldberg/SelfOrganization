@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppService from './AppService';
+// import AppUser from './AppUser';
+// import AppManager from './AppManager'
 import * as serviceWorker from './serviceWorker';
+// import App from './App'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppService />
+    {/* <AppUser />  */}
+
+    {/* <App /> */}
+    {/* <AppManager /> */}
+
   </React.StrictMode>,
   document.getElementById('root')
 );

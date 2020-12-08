@@ -2,7 +2,17 @@ import React from "react";
 import moment from "moment";
 // import { range } from "moment-range";
 import "./Callendar.css";
-export default class Calendar extends React.Component {
+import { hslToRgb } from "@material-ui/core";
+export default class Callendar extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log("callendarFilter", props.callendarFilter)
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.callendarFilter !== this.props.callendarFilter)
+            console.log("callendarFilter", this.props.callendarFilter)
+
+    }
     weekdayshort = moment.weekdaysShort();
 
     state = {
@@ -23,7 +33,7 @@ export default class Calendar extends React.Component {
         return this.state.dateObject.format("D");
     };
     firstDayOfMonth = () => {
-        let dateObject = this.state.dateObject;
+        let dateObject = Object.assign({}, this.state.dateObject);
         let firstDay = moment(dateObject).startOf("month").format("d"); // Day of week 0...1..5...6
         return firstDay;
     };
@@ -65,7 +75,7 @@ export default class Calendar extends React.Component {
         let cells = [];
 
         months.forEach((row, i) => {
-            if (i % 3 !== 0 || i == 0) {
+            if (i % 3 !== 0 || i === 0) {
                 cells.push(row);
             } else {
                 rows.push(cells);
@@ -114,8 +124,10 @@ export default class Calendar extends React.Component {
         } else {
             curr = "month";
         }
+        let obj = Object.assign({}, this.state.dateObject)
+        obj = moment(obj).add(1, curr)
         this.setState({
-            dateObject: this.state.dateObject.add(1, curr)
+            dateObject: obj
         });
     };
     setYear = (year) => {
@@ -134,8 +146,8 @@ export default class Calendar extends React.Component {
     getDates(startDate, stopDate) {
         var dateArray = [];
         var currentDate = moment(startDate);
-        var stopDate = moment(stopDate);
-        while (currentDate <= stopDate) {
+        var stopDate1 = moment(stopDate);
+        while (currentDate <= stopDate1) {
             dateArray.push(moment(currentDate).format("YYYY"));
             currentDate = moment(currentDate).add(1, "year");
         }
@@ -167,7 +179,7 @@ export default class Calendar extends React.Component {
         let cells = [];
 
         months.forEach((row, i) => {
-            if (i % 3 !== 0 || i == 0) {
+            if (i % 3 !== 0 || i === 0) {
                 cells.push(row);
             } else {
                 rows.push(cells);
@@ -202,6 +214,8 @@ export default class Calendar extends React.Component {
         );
     };
     render() {
+        // let x = this.props.callendarFilter[0] && this.props.callendarFilter[0].BusyDateToService
+        //     .find(item => { return item.getTime() == new Date(2018, 11, 26).getTime() });
         let weekdayshortname = this.weekdayshort.map((day) => {
             return <th key={day}>{day}</th>;
         });
@@ -211,7 +225,8 @@ export default class Calendar extends React.Component {
         }
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let currentDay = d == this.currentDay() ? "today" : "";
+            let datemonth = moment();
+            let currentDay = (d == this.currentDay() && this.month() == datemonth.format("MMMM") && this.year() == datemonth.format("Y")) ? "today" : "";
             //let isWedding = arr.find
             daysInMonth.push(
                 <td key={d} className={`calendar-day ${currentDay}`}>
@@ -221,8 +236,23 @@ export default class Calendar extends React.Component {
                         }}
                     >
                         {d}
+                        {this.props.callendarFilter.map((item, idx) => {
+                            let bd = false;
+                            let currentdate = new Date();
+                            let newdate = new Date(this.year() + '-' + this.month() + '-' + d);
+                            if (+newdate > +currentdate) {
+                                bd = item.BusyDateToService
+                                    .find(item => {
+                                        let i = new Date(item.getFullYear(), item.getMonth() - 1, item.getDate())
+                                        return i.getTime() == newdate.getTime()
+                                    }) ? true : false;
+                            }
+                            else bd = true;
+                            return (!bd &&
+                                // if (+newdate > +currentdate && !item.BusyDateToService.include(newdate))
+                                <div className="point" style={{ backgroundColor: hslToRgb(item.colorCategory) }} />);
+                        })}
                     </span>
-                    {<div className="point"></div>}
                 </td>
             );
         }
