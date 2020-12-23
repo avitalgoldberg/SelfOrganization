@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+// import './AppUser.css';
+import './comps/user/Calendar.css';
 import Home from './comps/user/Home'
 import AllCategories from './comps/user/AllCategories'
 import Events from './comps/user/EventsTable'
@@ -14,27 +16,28 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function AppUser() {
   return (
 
-  //   <>
-  //   <Header />
-  //   <Route exact path={props.path} component={props.component} />
+    //   <>
+    //   <Header />
+    //   <Route exact path={props.path} component={props.component} />
 
-  // </>
-
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/categories" component={AllCategories} />
-          <Route exact path="/calendar" component={Calendar} />
-          <Route exact path="/events" component={Events} />
-          <Route exact path="/invite" component={InvitedTable} />
-          <Route exact path="/shoppinglist" component={ShoppingList} />
-          <Route exact path="/services/:id" exact component={AllServices} />
-          <Route exact path="/serviceCard/:id" exact component={ServiceCard} />
-        </Switch>
-      </div>
-    </Router>
+    // </>
+    <div className="appuser">
+      <Router>
+        <div className="App">
+          <Header className="head" />
+          <Switch className="comps">
+            <Route exact path="/appuser" component={Home} />
+            <Route exact path="/categories" component={AllCategories} />
+            <Route exact path="/calendar" component={Calendar} />
+            <Route exact path="/events" component={Events} />
+            <Route exact path="/invite" component={InvitedTable} />
+            <Route exact path="/shoppinglist" component={ShoppingList} />
+            <Route exact path="/services/:id" exact component={AllServices} />
+            <Route exact path="/serviceCard/:id" exact component={ServiceCard} />
+          </Switch>
+        </div>
+      </Router>
+    </div>
   );
 }
 

@@ -6,7 +6,7 @@ const AllCategorysRouter = Router();
 
 //http://localhost:8080/allcategorys/getCategories
 AllCategorysRouter.get('/getCategories', (req, res) => {
-    const query = `SELECT idCategorys, CategoryName, CategoryImg FROM mydb.categorys;`;
+    const query = `SELECT idCategorys as id, CategoryName as name, CategoryImg as img FROM mydb.categorys;`;
     mysqlConnection.query(query, (err, rows) => {
         if (!err)
             res.send(rows);
@@ -28,6 +28,21 @@ AllCategorysRouter.get('/getPropCategoryById/:id', (req, res) => {
             res.send(err);
     })
 })
+
+AllCategorysRouter.get('/getShortServicesById/:id', (req, res) => {
+    const { id } = req.params;
+    const query = `SELECT idServices as id, ServicesName as name,ServicesImg as img ,shortDescription as shortDescription 
+                   FROM mydb.services;
+                   WHERE id=${id}`;
+    mysqlConnection.query(query, (err, row) => {
+        if (!err)
+            res.send(row);
+        else
+            res.send(err);
+    })
+})
+
+
 //בפוסטמן
 //localhost:8080/allcategorys/getLongServiceById/1 
 //בדפדפן  

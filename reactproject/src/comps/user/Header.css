@@ -15,7 +15,7 @@
 
 .parent{
     background-color:#cd283c;
-    height: max-content;
+    height: min-content;
     width: 100%;
 }    
 

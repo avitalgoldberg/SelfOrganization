@@ -83,7 +83,7 @@ export default function Header() {
                     <BottomNavigationAction label="קטגוריות" icon={<CategorySharpIcon fontSize="large" style={{ color: "#312c77" }} />} />
                 </BottomNavigation>
             </Link>
-            <Link to="/" id="l6">
+            <Link to="/appuser" id="l6">
                 <BottomNavigation
                     value={value}
                     onChange={(event, newValue) => {

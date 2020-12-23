@@ -58,7 +58,7 @@ const Signin = (props) => {
                 </ModalBody>
                 <ModalFooter style={{ height: 80, width: 310 }}>
 
-                    <Link href='/home'>
+                    <Link href='/appuser'>
                         <h6> {< EventBusyIcon />}D'ont sign-in ? click here !!!</h6>
                     </Link>
 
